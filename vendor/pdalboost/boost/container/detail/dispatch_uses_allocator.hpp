@@ -21,7 +21,6 @@
 #include <boost/container/allocator_traits.hpp>
 #include <boost/container/uses_allocator.hpp>
 
-#include <boost/container/detail/addressof.hpp>
 #include <boost/container/detail/mpl.hpp>
 #include <boost/container/detail/pair.hpp>
 #include <boost/container/detail/type_traits.hpp>
@@ -218,19 +217,19 @@ BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_SCOPED_ALLOCATOR_DISPATCH_USES_ALLOCATOR
 template < typename ConstructAlloc
          , typename ArgAlloc
          , typename Pair
-         > inline 
+         > inline
 BOOST_CONTAINER_DOC1ST(void, typename container_detail::enable_if<container_detail::is_pair<Pair> >::type)
    dispatch_uses_allocator
    ( ConstructAlloc & construct_alloc
    , ArgAlloc & arg_alloc
    , Pair* p)
 {
-   (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->first));
+   (dispatch_uses_allocator)(construct_alloc, arg_alloc, std::addressof(p->first));
    BOOST_TRY{
-      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->second));
+      (dispatch_uses_allocator)(construct_alloc, arg_alloc, std::addressof(p->second));
    }
    BOOST_CATCH(...) {
-      allocator_traits<ConstructAlloc>::destroy(construct_alloc, container_detail::addressof(p->first));
+      allocator_traits<ConstructAlloc>::destroy(construct_alloc, std::addressof(p->first));
       BOOST_RETHROW
    }
    BOOST_CATCH_END
@@ -246,12 +245,12 @@ BOOST_CONTAINER_DOC1ST(void, typename container_detail::enable_if<container_deta
    , ArgAlloc & arg_alloc
    , Pair* p, BOOST_FWD_REF(U) x, BOOST_FWD_REF(V) y)
 {
-   (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->first), ::pdalboost::forward<U>(x));
+   (dispatch_uses_allocator)(construct_alloc, arg_alloc, std::addressof(p->first), ::pdalboost::forward<U>(x));
    BOOST_TRY{
-      (dispatch_uses_allocator)(construct_alloc, arg_alloc, container_detail::addressof(p->second), ::pdalboost::forward<V>(y));
+      (dispatch_uses_allocator)(construct_alloc, arg_alloc, std::addressof(p->second), ::pdalboost::forward<V>(y));
    }
    BOOST_CATCH(...){
-      allocator_traits<ConstructAlloc>::destroy(construct_alloc, container_detail::addressof(p->first));
+      allocator_traits<ConstructAlloc>::destroy(construct_alloc, std::addressof(p->first));
       BOOST_RETHROW
    }
    BOOST_CATCH_END

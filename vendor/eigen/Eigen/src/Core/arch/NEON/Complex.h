@@ -67,7 +67,7 @@ template<> struct unpacket_traits<Packet2cf> { typedef std::complex<float> type;
 template<> EIGEN_STRONG_INLINE Packet2cf pset1<Packet2cf>(const std::complex<float>&  from)
 {
   float32x2_t r64;
-  r64 = vld1_f32((float *)&from);
+  r64 = vld1_f32((const float *)&from);
 
   return Packet2cf(vcombine_f32(r64, r64));
 }
@@ -93,7 +93,7 @@ template<> EIGEN_STRONG_INLINE Packet2cf pmul<Packet2cf>(const Packet2cf& a, con
   v1 = vmulq_f32(v1, b.v);
   // Multiply the imag a with b
   v2 = vmulq_f32(v2, b.v);
-  // Conjugate v2 
+  // Conjugate v2
   v2 = vreinterpretq_f32_u32(veorq_u32(vreinterpretq_u32_f32(v2), p4ui_CONJ_XOR()));
   // Swap real/imag elements in v2.
   v2 = vrev64q_f32(v2);
@@ -142,7 +142,7 @@ template<> EIGEN_DEVICE_FUNC inline void pscatter<std::complex<float>, Packet2cf
   to[stride*1] = std::complex<float>(vgetq_lane_f32(from.v, 2), vgetq_lane_f32(from.v, 3));
 }
 
-template<> EIGEN_STRONG_INLINE void prefetch<std::complex<float> >(const std::complex<float> *   addr) { EIGEN_ARM_PREFETCH((float *)addr); }
+template<> EIGEN_STRONG_INLINE void prefetch<std::complex<float> >(const std::complex<float> *   addr) { EIGEN_ARM_PREFETCH((const float *)addr); }
 
 template<> EIGEN_STRONG_INLINE std::complex<float>  pfirst<Packet2cf>(const Packet2cf& a)
 {
@@ -208,7 +208,7 @@ template<> EIGEN_STRONG_INLINE std::complex<float> predux_mul<Packet2cf>(const P
   v1 = vmul_f32(v1, a2);
   // Multiply the imag a with b
   v2 = vmul_f32(v2, a2);
-  // Conjugate v2 
+  // Conjugate v2
   v2 = vreinterpret_f32_u32(veor_u32(vreinterpret_u32_f32(v2), p2ui_CONJ_XOR()));
   // Swap real/imag elements in v2.
   v2 = vrev64_f32(v2);
@@ -343,7 +343,7 @@ template<> EIGEN_STRONG_INLINE Packet1cd pmul<Packet1cd>(const Packet1cd& a, con
 {
   Packet2d v1, v2;
 
-  // Get the real values of a 
+  // Get the real values of a
   v1 = vdupq_lane_f64(vget_low_f64(a.v), 0);
   // Get the imag values of a
   v2 = vdupq_lane_f64(vget_high_f64(a.v), 0);
@@ -351,7 +351,7 @@ template<> EIGEN_STRONG_INLINE Packet1cd pmul<Packet1cd>(const Packet1cd& a, con
   v1 = vmulq_f64(v1, b.v);
   // Multiply the imag a with b
   v2 = vmulq_f64(v2, b.v);
-  // Conjugate v2 
+  // Conjugate v2
   v2 = vreinterpretq_f64_u64(veorq_u64(vreinterpretq_u64_f64(v2), p2ul_CONJ_XOR));
   // Swap real/imag elements in v2.
   v2 = preverse<Packet2d>(v2);
@@ -381,7 +381,7 @@ template<> EIGEN_STRONG_INLINE Packet1cd ploaddup<Packet1cd>(const std::complex<
 template<> EIGEN_STRONG_INLINE void pstore <std::complex<double> >(std::complex<double> *   to, const Packet1cd& from) { EIGEN_DEBUG_ALIGNED_STORE pstore((double*)to, from.v); }
 template<> EIGEN_STRONG_INLINE void pstoreu<std::complex<double> >(std::complex<double> *   to, const Packet1cd& from) { EIGEN_DEBUG_UNALIGNED_STORE pstoreu((double*)to, from.v); }
 
-template<> EIGEN_STRONG_INLINE void prefetch<std::complex<double> >(const std::complex<double> *   addr) { EIGEN_ARM_PREFETCH((double *)addr); }
+template<> EIGEN_STRONG_INLINE void prefetch<std::complex<double> >(const std::complex<double> *   addr) { EIGEN_ARM_PREFETCH((const double *)addr); }
 
 template<> EIGEN_DEVICE_FUNC inline Packet1cd pgather<std::complex<double>, Packet1cd>(const std::complex<double>* from, Index stride)
 {

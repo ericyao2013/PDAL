@@ -51,7 +51,6 @@ using pdalboost::move_detail::is_const;
 using pdalboost::move_detail::identity;
 using pdalboost::move_detail::alignment_of;
 using pdalboost::move_detail::is_empty;
-using pdalboost::move_detail::addressof;
 using pdalboost::move_detail::integral_constant;
 using pdalboost::move_detail::enable_if_convertible;
 using pdalboost::move_detail::disable_if_convertible;

@@ -9,7 +9,6 @@
 #ifndef BOOST_UTILITY_HPP
 #define BOOST_UTILITY_HPP
 
-#include <boost/utility/addressof.hpp>
 #include <boost/utility/base_from_member.hpp>
 #include <boost/utility/binary.hpp>
 #include <boost/utility/enable_if.hpp>

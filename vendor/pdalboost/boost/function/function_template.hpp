@@ -604,7 +604,7 @@ namespace pdalboost {
         bool 
         assign_to(FunctionObj f, function_buffer& functor, function_obj_tag) const
         {
-          if (!pdalboost::detail::function::has_empty_target(pdalboost::addressof(f))) {
+          if (!pdalboost::detail::function::has_empty_target(std::addressof(f))) {
             assign_functor(f, functor, 
                            mpl::bool_<(function_allows_small_object_optimization<FunctionObj>::value)>());
             return true;
@@ -616,7 +616,7 @@ namespace pdalboost {
         bool 
         assign_to_a(FunctionObj f, function_buffer& functor, Allocator a, function_obj_tag) const
         {
-          if (!pdalboost::detail::function::has_empty_target(pdalboost::addressof(f))) {
+          if (!pdalboost::detail::function::has_empty_target(std::addressof(f))) {
             assign_functor_a(f, functor, a,
                            mpl::bool_<(function_allows_small_object_optimization<FunctionObj>::value)>());
             return true;

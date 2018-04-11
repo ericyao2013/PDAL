@@ -82,7 +82,6 @@
 #include <boost/type_traits/is_base_and_derived.hpp>
 #include <boost/type_traits/is_rvalue_reference.hpp>
 #include <boost/iterator/iterator_traits.hpp>
-#include <boost/utility/addressof.hpp>
 #include <boost/foreach_fwd.hpp>
 
 #ifdef BOOST_FOREACH_RUN_TIME_CONST_RVALUE_DETECTION
@@ -639,7 +638,7 @@ inline auto_any<T *> contain(T &t, pdalboost::mpl::false_ *) // lvalue
     #if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x570))
     return auto_any<T *>(&t);
     #else
-    return auto_any<T *>(pdalboost::addressof(t));
+    return auto_any<T *>(std::addressof(t));
     #endif
 }
 

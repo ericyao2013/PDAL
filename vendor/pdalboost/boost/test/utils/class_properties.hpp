@@ -26,7 +26,6 @@
 #include <boost/call_traits.hpp>
 #include <boost/type_traits/add_pointer.hpp>
 #include <boost/type_traits/add_const.hpp>
-#include <boost/utility/addressof.hpp>
 
 // STL
 #include <iosfwd>
@@ -131,7 +130,7 @@ public:
     explicit        readonly_property( write_param_t init_value ) : base_prop( init_value ) {}
 
     // access methods
-    arrow_res_t     operator->() const      { return pdalboost::addressof( base_prop::value ); }
+    arrow_res_t     operator->() const      { return std::addressof( base_prop::value ); }
 };
 
 //____________________________________________________________________________//
@@ -175,8 +174,8 @@ public:
 
     // access methods
     void            set( write_param_t v )  { base_prop::value = v; }
-    arrow_res_t     operator->()            { return pdalboost::addressof( base_prop::value ); }
-    const_arrow_res_t operator->() const    { return pdalboost::addressof( base_prop::value ); }
+    arrow_res_t     operator->()            { return std::addressof( base_prop::value ); }
+    const_arrow_res_t operator->() const    { return std::addressof( base_prop::value ); }
 
 #ifndef BOOST_TEST_NO_PROTECTED_USING
     using           base_prop::value;

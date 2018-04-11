@@ -54,7 +54,7 @@
             && ::pdalboost::move_detail::is_nothrow_move_constructible_or_uncopyable<T>::value, rv<T>&>::type
          move_if_noexcept(T& x) BOOST_NOEXCEPT
    {
-      return *static_cast<rv<T>* >(::pdalboost::move_detail::addressof(x));
+      return *static_cast<rv<T>* >(std::addressof(x));
    }
 
    template <class T>

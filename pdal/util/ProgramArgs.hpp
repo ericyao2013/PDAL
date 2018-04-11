@@ -158,6 +158,9 @@ protected:
     {}
 
 public:
+    virtual ~Arg()
+    {}
+
     /**
       Indicate that the argument shouldn't be shown in help text.
 
@@ -230,7 +233,6 @@ public:
     virtual std::string defaultVal() const
         { return std::string(); }
 
-public:
     /**
       Return whether an option needs a value to be valid.  Generally true
       for all options not bound to boolean values.

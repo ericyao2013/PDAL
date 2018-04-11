@@ -8,7 +8,6 @@
 #endif
 
 #include <boost/config.hpp>
-#include <boost/utility/addressof.hpp>
 #include <boost/detail/workaround.hpp>
 
 //
@@ -70,11 +69,11 @@ public:
 
      @remark Does not throw.
     */
-    BOOST_FORCEINLINE explicit reference_wrapper(T& t): t_(pdalboost::addressof(t)) {}
+    BOOST_FORCEINLINE explicit reference_wrapper(T& t): t_(std::addressof(t)) {}
 
 #if defined( BOOST_MSVC ) && BOOST_WORKAROUND( BOOST_MSVC, == 1600 )
 
-    BOOST_FORCEINLINE explicit reference_wrapper( T & t, ref_workaround_tag ): t_( pdalboost::addressof( t ) ) {}
+    BOOST_FORCEINLINE explicit reference_wrapper( T & t, ref_workaround_tag ): t_( std::addressof( t ) ) {}
 
 #endif
 

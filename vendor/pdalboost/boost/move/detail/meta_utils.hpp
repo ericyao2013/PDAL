@@ -241,6 +241,7 @@ struct is_class_or_union
 //////////////////////////////////////
 //             addressof
 //////////////////////////////////////
+/**
 template<class T>
 struct addr_impl_ref
 {
@@ -271,6 +272,7 @@ inline T * addressof( T & v )
    return ::pdalboost::move_detail::addressof_impl<T>::f
       ( ::pdalboost::move_detail::addr_impl_ref<T>( v ), 0 );
 }
+**/
 
 //////////////////////////////////////
 //          has_pointer_type

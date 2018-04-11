@@ -214,7 +214,7 @@ struct pointer_traits
    { return Ptr::pointer_to(r); }
 
    static pointer priv_pointer_to(pdalboost::intrusive::detail::false_, reference r)
-   { return pointer(pdalboost::intrusive::detail::addressof(r)); }
+   { return pointer(std::addressof(r)); }
 
    //priv_static_cast_from
    template<class UPtr>
@@ -289,7 +289,7 @@ struct pointer_traits<T*>
    //! <b>Returns</b>: addressof(r)
    //!
    static pointer pointer_to(reference r)
-   { return pdalboost::intrusive::detail::addressof(r); }
+   { return std::addressof(r); }
 
    //! <b>Returns</b>: static_cast<pointer>(uptr)
    //!

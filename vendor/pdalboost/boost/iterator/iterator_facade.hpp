@@ -17,7 +17,6 @@
 #include <boost/iterator/detail/enable_if.hpp>
 
 #include <boost/static_assert.hpp>
-#include <boost/utility/addressof.hpp>
 
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/add_const.hpp>
@@ -323,10 +322,10 @@ namespace iterators {
         struct proxy
         {
             explicit proxy(Reference const & x) : m_ref(x) {}
-            Reference* operator->() { return pdalboost::addressof(m_ref); }
+            Reference* operator->() { return std::addressof(m_ref); }
             // This function is needed for MWCW and BCC, which won't call
             // operator-> again automatically per 13.3.1.2 para 8
-            operator Reference*() { return pdalboost::addressof(m_ref); }
+            operator Reference*() { return std::addressof(m_ref); }
             Reference m_ref;
         };
         typedef proxy result_type;
@@ -342,7 +341,7 @@ namespace iterators {
         typedef Pointer result_type;
         static result_type apply(T& x)
         {
-            return pdalboost::addressof(x);
+            return std::addressof(x);
         }
     };
 

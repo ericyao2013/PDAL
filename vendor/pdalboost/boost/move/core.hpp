@@ -213,7 +213,7 @@
       , ::pdalboost::rv<T>&>::type
          move_return(T& x) BOOST_NOEXCEPT
    {
-      return *BOOST_MOVE_TO_RV_CAST(::pdalboost::rv<T>*, ::pdalboost::move_detail::addressof(x));
+      return *BOOST_MOVE_TO_RV_CAST(::pdalboost::rv<T>*, std::addressof(x));
    }
 
    template <class Ret, class T>
