@@ -13,9 +13,7 @@ environment:
   OSGEO4W_ROOT: C:\\OSGeo4W64
 
   matrix:
-    - PDAL_OPTIONAL_COMPONENTS: OFF
     - PDAL_OPTIONAL_COMPONENTS: ON
-    - OSGEO4W_BUILD: ON
 
 # Should speed up repository cloning
 shallow_clone: true
