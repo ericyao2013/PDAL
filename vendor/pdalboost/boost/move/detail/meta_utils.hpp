@@ -239,42 +239,6 @@ struct is_class_or_union
 };
 
 //////////////////////////////////////
-//             addressof
-//////////////////////////////////////
-/**
-template<class T>
-struct addr_impl_ref
-{
-   T & v_;
-   inline addr_impl_ref( T & v ): v_( v ) {}
-   inline operator T& () const { return v_; }
-
-   private:
-   addr_impl_ref & operator=(const addr_impl_ref &);
-};
-
-template<class T>
-struct addressof_impl
-{
-   static inline T * f( T & v, long )
-   {
-      return reinterpret_cast<T*>(
-         &const_cast<char&>(reinterpret_cast<const volatile char &>(v)));
-   }
-
-   static inline T * f( T * v, int )
-   {  return v;  }
-};
-
-template<class T>
-inline T * addressof( T & v )
-{
-   return ::pdalboost::move_detail::addressof_impl<T>::f
-      ( ::pdalboost::move_detail::addr_impl_ref<T>( v ), 0 );
-}
-**/
-
-//////////////////////////////////////
 //          has_pointer_type
 //////////////////////////////////////
 template <class T>
