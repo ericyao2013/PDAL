@@ -35,7 +35,6 @@
 
 #include "../filters/private/hexer/hexer.hpp"
 #include "../filters/private/hexer/Processor.hpp"
-#include "../filters/private/hexer/hexer_defines.h"
 #include "../filters/private/hexer/Mathpair.hpp"
 #include "../filters/private/hexer/HexInfo.hpp"
 #include "../filters/private/hexer/export.hpp"
