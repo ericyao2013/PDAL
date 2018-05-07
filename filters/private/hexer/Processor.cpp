@@ -99,10 +99,7 @@ std::string GetFullVersion( void )
 {
     std::ostringstream os;
 
-    os << "hexer "
-       << HEXER_VERSION_MAJOR << "."
-       << HEXER_VERSION_MINOR << "."
-       << HEXER_VERSION_PATCH;
+    os << "hexer pdal-build ";
 
 #ifdef HEXER_HAVE_GDAL
     os << " with GDAL " << GDALVersionInfo("RELEASE_NAME");

@@ -36,8 +36,6 @@
 #ifndef INCLUDED_HEXER_EXPORT_HPP
 #define INCLUDED_HEXER_EXPORT_HPP
 
-#include <hexer/hexer_defines.h>
-
 #ifndef HEXER_DLL
 #if defined(HEXER_COMPILER_MSVC) && !defined(HEXER_DISABLE_DLL)
 #if defined(HEXER_DLL_EXPORT)

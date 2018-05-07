@@ -35,7 +35,6 @@
 #ifndef INCLUDED_HEXER_HPP
 #define INCLUDED_HEXER_HPP
 
-#include "hexer_defines.h"
 #include "exception.hpp"
 #include "gitsha.h"
 
