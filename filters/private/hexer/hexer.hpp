@@ -36,6 +36,5 @@
 #define INCLUDED_HEXER_HPP
 
 #include "exception.hpp"
-#include "gitsha.h"
 
 #endif
