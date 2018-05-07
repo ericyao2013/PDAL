@@ -178,7 +178,7 @@ std::ostream& operator << (std::ostream& os, const Segment &s)
 {
     os << s.m_hex->x() << "/" << s.m_hex->y() << " - " << s.m_side;
     return os;
-};
+}
 
 } // namespace hexer
 
