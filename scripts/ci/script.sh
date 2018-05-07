@@ -8,8 +8,6 @@ apk add \
     cmake \
     alpine-sdk \
     eigen-dev@edgecommunity \
-    hexer \
-    hexer-dev \
     nitro \
     nitro-dev \
     gdal \
@@ -73,7 +71,6 @@ cmake .. \
     -DBUILD_PLUGIN_PYTHON=ON \
     -DBUILD_PLUGIN_CPD=ON \
     -DBUILD_PLUGIN_GREYHOUND=ON \
-    -DBUILD_PLUGIN_HEXBIN=ON \
     -DBUILD_PLUGIN_NITF=ON \
     -DBUILD_PLUGIN_ICEBRIDGE=ON \
     -DBUILD_PLUGIN_PGPOINTCLOUD=ON \
